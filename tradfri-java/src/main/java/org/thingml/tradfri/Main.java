@@ -70,10 +70,10 @@ public class Main {
 		final int numberOfFlashes = 7;
 
 		final int minFlashTimeInMS = 10;
-		final int maxFlashTimeInMS = 20;
+		final int maxFlashTimeInMS = 30;
 
 		final int minTimeBetweenFlashesMS = 50;
-		final int maxTimeBetweenFlashesMS = 150;
+		final int maxTimeBetweenFlashesMS = 130;
 
 		final int minIntensity = 50;
 		final int maxIntensity = 250;
