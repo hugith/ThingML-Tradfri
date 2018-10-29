@@ -69,6 +69,9 @@ public class Main {
 	private static void generateLightningBolt( LightBulb bulb ) {
 		final int numberOfFlashes = 7;
 
+		final int minFlashTimeInMS = 10;
+		final int maxFlashTimeInMS = 20;
+
 		final int minTimeBetweenFlashesMS = 50;
 		final int maxTimeBetweenFlashesMS = 150;
 
@@ -77,14 +80,16 @@ public class Main {
 
 		for( int i = 0 ; i < numberOfFlashes ; i++ ) {
 			try {
-				final long waitTimeMS = generateRandom( minTimeBetweenFlashesMS, maxTimeBetweenFlashesMS );
+				final long timeBetweenFlashesMS = generateRandom( minTimeBetweenFlashesMS, maxTimeBetweenFlashesMS );
+				final int flashTimeInMS = generateRandom( minFlashTimeInMS, maxFlashTimeInMS );
 				final int intensity = generateRandom( minIntensity, maxIntensity );
 
-				System.out.println( String.format( "Flash %s; Intensity %s; Delay: %s", i, waitTimeMS, intensity ) );
+				System.out.println( String.format( "Flash %s; Intensity %s; Delay: %s", i, timeBetweenFlashesMS, intensity ) );
 
 				bulb.setIntensity( intensity, 0 );
-				Thread.sleep( waitTimeMS );
+				Thread.sleep( flashTimeInMS );
 				bulb.setIntensity( 0, 0 );
+				Thread.sleep( timeBetweenFlashesMS );
 			}
 			catch( InterruptedException e ) {
 				throw new RuntimeException( "Dammit, don't interrupt me while I'm lightninging!" );
