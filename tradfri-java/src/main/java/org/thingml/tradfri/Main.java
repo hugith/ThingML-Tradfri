@@ -24,9 +24,9 @@ public class Main {
 
 	public static void main( String[] args ) {
 
-		new Thread( () -> {
-			playRainscape();
-		} ).start();
+		// new Thread( () -> {
+		// playRainscape();
+		// } ).start();
 
 		final LightBulb bulb = bulbNamed( BULB_WHITE );
 		bulb.setColor( TradfriConstants.COLOR_COLD );
@@ -58,7 +58,8 @@ public class Main {
 		gw.dicoverBulbs();
 
 		for( LightBulb b : gw.bulbs ) {
-			if( b.getName().equals( BULB_WHITE ) ) {
+			System.out.println( b.getName() );
+			if( b.getName().equals( bulbName ) ) {
 				return b;
 			}
 		}
@@ -77,6 +78,8 @@ public class Main {
 
 		final int minIntensity = 50;
 		final int maxIntensity = 250;
+
+		bulb.setColor( TradfriConstants.COLOR_COLD );
 
 		for( int i = 0 ; i < numberOfFlashes ; i++ ) {
 			try {
